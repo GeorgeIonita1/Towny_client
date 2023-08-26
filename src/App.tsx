@@ -1,12 +1,17 @@
-import { Container } from '@mui/material';
+import { Container, CssBaseline } from '@mui/material';
+
 import FormLogin from './components/FormLogin';
+import Header from './components/Header';
 
 function App() {
   return (
-    <Container>
-      Towny
-      <FormLogin />
-    </Container>
+    <>
+    <CssBaseline />
+      <Header />
+      <Container>
+        <FormLogin />
+      </Container>
+    </>
   )
 }
 
