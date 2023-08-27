@@ -25,7 +25,7 @@ export default function Header() {
                         </Stack>
                     </Box>
 
-                    <Button variant="outlined">Login / Register</Button>
+                    <Button variant='outlined' href="/login">Login / Register</Button>
                 </Box>
             </Container>
         </Box>
