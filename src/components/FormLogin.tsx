@@ -15,7 +15,7 @@ export default function FormLogin() {
                     continueWithEmail && { display: 'none' }
                 ]}>
                     <Box component='form' sx={{ mt: 4 }}>
-                        <TextField label="email" variant="outlined" required sx={{ display: 'block', mb: 2 }} fullWidth />
+                        <TextField label="email" variant="outlined" required sx={{ mb: 2 }} fullWidth />
                         <Button variant='contained' sx={{ display: 'block', py: '1rem' }} fullWidth>Continue</Button>
                     </Box>
 
