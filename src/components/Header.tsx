@@ -1,22 +1,13 @@
-// todo: change default props for styled custom component
-
-import { Box, Button, Container, Typography, Link } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import { Box, Button, Container, Typography, Link, Stack } from "@mui/material";
 import SavingsIcon from '@mui/icons-material/Savings';
 
 export default function Header() {
-    const NavigaionItem = styled(Link)(({ theme }) => ({
-        color: theme.palette.success.main,
-        fontWeight: "bold",
-        cursor: 'pointer'
-      }));
-
     return (
         <Box sx={{ backgroundColor: 'black' }}>
             <Container>
                 <Box sx={{ display: 'flex', alignItems: 'center', py: 3}}>
                     <Typography 
-                        component='a' 
+                        component='a'
                         sx={{ fontSize: 20, fontWeight: '900', display: 'inline-flex', alignItems: 'center', gap: 1, textDecoration: 'none' }} 
                         href="http://google.com" 
                         target="_blank"
@@ -25,11 +16,13 @@ export default function Header() {
                         Towny
                     </Typography>
 
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, ml: 4, mr: 'auto' }}>
-                        <NavigaionItem underline="hover">Dashboard</NavigaionItem>
-                        <NavigaionItem underline="hover">Stays</NavigaionItem>
-                        <NavigaionItem underline="hover">Flights</NavigaionItem>
-                        <NavigaionItem underline="hover">Rentals</NavigaionItem>
+                    <Box component='nav' sx={{ ml: 6, mr: 'auto' }}>
+                        <Stack component='ul' direction='row' spacing={3} padding={0}>
+                            <li><Link href='/'>Landing</Link></li>
+                            <li><Link href='/login'>Login</Link></li>
+                            <li><Link href='/'>Landing</Link></li>
+                            <li><Link href='/login'>Login</Link></li>
+                        </Stack>
                     </Box>
 
                     <Button variant="outlined">Login / Register</Button>
