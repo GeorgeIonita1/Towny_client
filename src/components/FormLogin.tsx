@@ -1,3 +1,6 @@
+// todo: integrate formik
+// maybe add some <sections> for future places
+
 import { Paper, Box, Typography, TextField, Button, Grid } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
