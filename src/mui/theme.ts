@@ -16,5 +16,10 @@ export const theme = createTheme({
             LinkComponent: LinkBehavior,
             },
         },
+        MuiContainer: {
+            defaultProps: {
+                maxWidth: 'xl',
+            }
+        }
     },
 })

@@ -1,4 +1,4 @@
-import { Container, CssBaseline, Box } from '@mui/material';
+import { CssBaseline, Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { Route, Routes } from 'react-router-dom';
 
@@ -13,12 +13,10 @@ function App() {
       <CssBaseline />
       <Header />
       <Box component='main' pt='6rem'>
-        <Container>
-          <Routes>
-            <Route path='/' element={<Landing />} />
-            <Route path='/login' element={<FormLogin />} />
-          </Routes>
-        </Container>
+        <Routes>
+          <Route path='/' element={<Landing />} />
+          <Route path='/login' element={<FormLogin />} />
+        </Routes>
       </Box>
     </ThemeProvider>
   )
