@@ -12,7 +12,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
-      <Box component='main' pt='6rem'>
+      <Box component='main'>
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/login' element={<FormLogin />} />

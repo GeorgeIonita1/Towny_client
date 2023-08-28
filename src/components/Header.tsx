@@ -3,7 +3,7 @@ import SavingsIcon from '@mui/icons-material/Savings';
 
 export default function Header() {
     return (
-        <Box sx={{ backgroundColor: 'black' }}>
+        <Box component='header' sx={{ backgroundColor: 'black' }}>
             <Container>
                 <Box sx={{ display: 'flex', alignItems: 'center', py: 3}}>
                     <Typography 
