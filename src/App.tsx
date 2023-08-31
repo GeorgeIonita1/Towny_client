@@ -2,7 +2,7 @@ import { CssBaseline, Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { Route, Routes } from 'react-router-dom';
 
-import FormLogin from './components/FormLogin';
+import FormLogin from './components/forms/FormLogin';
 import Header from './components/Header';
 import Landing from './pages/Landing';
 import { theme } from './mui/theme';
