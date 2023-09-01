@@ -8,6 +8,27 @@ import { useState } from 'react';
 
 export default function FormLogin() {
     const [isRegister, setIsRegister] = useState(false);
+    const [userState, setUserState] = useState({});
+
+    const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUserState({
+            ...userState,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleFormSubmit = () => {
+        fetch('http://localhost:6677/users/new-user', {
+            method: 'POST',
+            body: JSON.stringify(userState),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(res => res.json())
+            .then(res => console.log(res))
+    }
 
     return (
         <Box sx={{ maxWidth: 600, m: '0 auto' }}>
@@ -16,15 +37,28 @@ export default function FormLogin() {
                 <Typography variant='h6' component='h2'>Sign in or create account</Typography>
 
                 <Box component='form' sx={{ mt: 4, '& > *': { width: 1 } }}>
-                    <TextField label="email" variant="outlined" required sx={{ mb: 2 }} />
-                    <TextField label="password" type='password' variant="outlined" required sx={{ mb: 1 }} />
-                    { isRegister && <TextField label="confirm password" type='password' variant="outlined" required sx={{ display: 'block', mb: 2 }} fullWidth /> }
+                    <TextField name='email' label="email" variant="outlined" required sx={{ mb: 2 }}
+                        onChange={handleUserInput} 
+                    />
+
+                    <TextField name='password' label="password" type='password' variant="outlined" 
+                        required sx={{ mb: 1 }}
+                        onChange={handleUserInput} 
+                    />
+
+                    { isRegister && 
+                        <TextField name='confirmPassword' label="confirm password" type='password' variant="outlined" 
+                            required fullWidth sx={{ display: 'block', mb: 2 }} 
+                            onChange={handleUserInput}
+                        /> 
+                    }
 
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 6 }}>
                         <Typography>Forgot password?</Typography>
                         { !isRegister && <Typography onClick={() => setIsRegister(true)}>Register</Typography>}
                     </Box>
-                    <Button variant='contained' sx={{ py: '1rem' }}>Continue</Button>
+                    <Button variant='contained' sx={{ py: '1rem' }}
+                        onClick={handleFormSubmit}>Continue</Button>
                 </Box>
 
                 <Typography variant='subtitle1' component='h3' align='center' sx={{ mt: 1}}>or sign in with</Typography>
