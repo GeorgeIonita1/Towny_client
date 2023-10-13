@@ -1,0 +1,3 @@
+interface FormLoginProps {
+    isLogin: boolean;
+}

@@ -2,10 +2,10 @@ import { CssBaseline, Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { Route, Routes } from 'react-router-dom';
 
-import FormLogin from './components/forms/FormLogin';
 import Header from './components/Header';
 import Landing from './pages/Landing';
 import { theme } from './mui/theme';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -15,7 +15,8 @@ function App() {
       <Box component='main'>
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='/login' element={<FormLogin />} />
+          <Route path='/login' element={<Login isLogin={true} />} />
+          <Route path='/register' element={<Login isLogin={false} />} />
         </Routes>
       </Box>
     </ThemeProvider>
