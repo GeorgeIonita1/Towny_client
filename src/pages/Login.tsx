@@ -1,6 +1,3 @@
-// todo: integrate formik
-// maybe add some <sections> for future places
-
 import { Paper, Box, Typography, TextField, Button, Link } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -48,7 +45,7 @@ export default function FormLogin({ isLogin }: FormLoginProps) {
         })
     }
 
-    const handleFormSubmit = (e: React.SyntheticEvent) => {
+    const handleFormSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
         console.log("george", formData)
         
@@ -59,16 +56,18 @@ export default function FormLogin({ isLogin }: FormLoginProps) {
 
         console.log('all good', formData)
 
-        fetch('http://localhost:6677/users/register', {
+        const response = await fetch('http://localhost:6677/users/register', {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
-        })
-            .then(res => res.json())
-            .then(res => console.log(res))
+        });
+
+        if (!response.ok) {
+            const data = await response.json();
+            console.log(data)
+        }
     }
 
     return (
