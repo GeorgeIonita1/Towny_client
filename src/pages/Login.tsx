@@ -1,74 +1,10 @@
 import { Paper, Box, Typography, TextField, Button, Link } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import { useState } from 'react';
+import useRegisterUser from '../hooks/useRegisterUser';
 
-export default function FormLogin({ isLogin }: FormLoginProps) {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        confirmPassword: ''
-    });
-    const [formError, setFormError] = useState({
-        email: '',
-        password: '',
-        confirmPassword: ''
-    });
-
-    const validateForm = () => {
-        const errors = {
-            email: '',
-            password: '',
-            confirmPassword: ''
-        }
-
-        if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-            errors.email = 'Invalid email address';
-        }
-
-        if (formData.password.length < 8) {
-            errors.password = 'Password must be at least 8 characters';
-        }
-
-        if (formData.password !== formData.confirmPassword && !isLogin) {
-            errors.confirmPassword = 'Password must match';
-        }
-
-        setFormError(errors);
-        return Object.values(errors).every(error => error === '');
-    }
-
-    const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const handleFormSubmit = async (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        console.log("george", formData)
-        
-        if (!validateForm()) {
-            console.log("smth is briken");
-            return;
-        }
-
-        console.log('all good', formData)
-
-        const response = await fetch('http://localhost:6677/users/register', {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-
-        if (!response.ok) {
-            const data = await response.json();
-            console.log(data)
-        }
-    }
+export default function FormLogin({ isLogin }: IFormLoginProps) {
+    const { formError, handleUserInput, handleFormSubmit } = useRegisterUser(isLogin);
 
     return (
         <Box sx={{ maxWidth: 600, m: '0 auto' }}>
