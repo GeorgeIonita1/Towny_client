@@ -10,10 +10,18 @@ export interface IUserFormData {
     confirmPassword?: string;
 }
 
+interface IModalData {
+    type: string;
+    message: string;
+    solution: string;
+}
+
 export interface IModalContext {
     isModalOpen: boolean;
+    modalData: any;
     handleCloseModal: () => void;
     handleOpenModal: () => void;
+    setModalData: (data: IModalData) => void;
 }
 
 export interface ModalProviderProps {

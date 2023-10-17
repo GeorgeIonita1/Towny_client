@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { validateForm } from '../helpers/general_helpers';
 import { fetchRegisterUser } from '../api/data_fetching';
+import { useModal } from '../contexts/ModalContext';
 
 export default function useRegisterUser(isLogin: boolean) {
     const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ export default function useRegisterUser(isLogin: boolean) {
         confirmPassword: ''
     });
 
+    const { handleOpenModal, setModalData } = useModal();
+
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
@@ -24,26 +27,31 @@ export default function useRegisterUser(isLogin: boolean) {
 
     const handleFormSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
-        console.log("george", formData)
         
         if (!validateForm(formData, isLogin, setFormError)) {
             console.log("smth is briken");
             return;
         }
 
-        console.log('all good', formData)
+        console.log('all good', formData);
 
         const response = await fetchRegisterUser(formData);
 
-        if (!response.ok) {
+        if (response.status === 403) {
             const data = await response.json();
-            console.log(data)
+            const { type, message, solution } = data;
+            handleOpenModal();
+            setModalData({ type, message, solution })
             return;
-        } else {
+        } else if (response.ok) {
             const data = await response.json();
-            console.log(data);
+            const { type, message, solution } = data;
+            handleOpenModal();
+            setModalData({ type, message, solution })
+        } else {
+            console.error(response.status);
         }
-
+        
     }
 
     return { handleUserInput, handleFormSubmit, formError };
