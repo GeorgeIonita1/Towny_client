@@ -1,6 +1,6 @@
 import { Dialog } from '@mui/material';
 
-import { useModal } from '../../../contexts/ModalContext';
+import { useModal } from '../../contexts/ModalContext';
 
 export default function GeneralModal() {
     const { isModalOpen, handleCloseModal, modalData } = useModal();

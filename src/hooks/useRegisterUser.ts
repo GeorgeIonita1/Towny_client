@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { validateForm } from '../helpers/general_helpers';
-import { fetchRegisterUser } from '../api/data_fetching';
+import { fetchRegisterUser, fetchSignInUser } from '../api/data_fetching';
 import { useModal } from '../contexts/ModalContext';
 
 export default function useRegisterUser(isLogin: boolean) {
@@ -35,22 +35,27 @@ export default function useRegisterUser(isLogin: boolean) {
 
         console.log('all good', formData);
 
-        const response = await fetchRegisterUser(formData);
-
-        if (response.status === 403) {
-            const data = await response.json();
-            const { type, message, solution } = data;
-            handleOpenModal();
-            setModalData({ type, message, solution })
-            return;
-        } else if (response.ok) {
-            const data = await response.json();
-            const { type, message, solution } = data;
-            handleOpenModal();
-            setModalData({ type, message, solution })
+        if (!isLogin) {
+            const response = await fetchRegisterUser(formData);
+    
+            if (response.status === 403) {
+                const data = await response.json();
+                const { type, message, solution } = data;
+                handleOpenModal();
+                setModalData({ type, message, solution })
+                return;
+            } else if (response.ok) {
+                const data = await response.json();
+                const { type, message, solution } = data;
+                handleOpenModal();
+                setModalData({ type, message, solution })
+            } else {
+                console.error(response.status);
+            }
         } else {
-            console.error(response.status);
+            const response = await fetchSignInUser(formData);
         }
+
         
     }
 

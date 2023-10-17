@@ -4,7 +4,7 @@ import { IModalContext, ModalProviderProps } from "../interfaces/interfaces";
 const ModalContext = createContext<IModalContext | undefined>(undefined);
 
 const ModalProvider = ({ children }: ModalProviderProps) => {
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState({
         type: '',
         message: '',
@@ -21,7 +21,7 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
 
     return (
         <ModalContext.Provider value={{ isModalOpen, modalData,  handleCloseModal, handleOpenModal, setModalData }}>
-            {children}
+            { children }
         </ModalContext.Provider>
     );
 }

@@ -6,7 +6,7 @@ import Header from './components/header/Header';
 import Landing from './pages/Landing';
 import { theme } from './mui/theme';
 import Login from './pages/Login';
-import GeneralModal from './components/header/modals/GeneralModal';
+import GeneralModal from './components/modals/GeneralModal';
 
 function App() {
   return (
