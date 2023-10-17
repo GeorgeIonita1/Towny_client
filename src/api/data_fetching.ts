@@ -1,3 +1,5 @@
+import { IUserFormData } from "../interfaces/interfaces";
+
 const BASE_URL = 'http://localhost:6677';
 const HEADERS = { 'Content-Type': 'application/json' };
 

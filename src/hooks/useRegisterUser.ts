@@ -40,7 +40,8 @@ export default function useRegisterUser(isLogin: boolean) {
             console.log(data)
             return;
         } else {
-            // create user logic
+            const data = await response.json();
+            console.log(data);
         }
 
     }

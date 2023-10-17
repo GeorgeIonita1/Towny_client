@@ -1,5 +1,7 @@
 // todo: type of setFormError
 
+import { IUserFormData } from "../interfaces/interfaces";
+
 export const validateForm = (formData: IUserFormData, isLogin: boolean, setFormError: any) => {
     const errors = {
         email: '',
