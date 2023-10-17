@@ -39,8 +39,10 @@ export default function useRegisterUser(isLogin: boolean) {
             const data = await response.json();
             console.log(data)
             return;
+        } else {
+            // create user logic
         }
-        console.log('asta nu trebuie sa apara')
+
     }
 
     return { handleUserInput, handleFormSubmit, formError };
