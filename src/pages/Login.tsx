@@ -1,6 +1,7 @@
 import { Paper, Box, Typography, TextField, Button, Link } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
+
 import useRegisterUser from '../hooks/useRegisterUser';
 import { IFormLoginProps } from '../interfaces/interfaces';
 

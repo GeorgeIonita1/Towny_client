@@ -7,6 +7,7 @@ import Landing from './pages/Landing';
 import { theme } from './mui/theme';
 import Login from './pages/Login';
 import GeneralModal from './components/modals/GeneralModal';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<Landing />} />
           <Route path='/login' element={<Login isLogin={true} />} />
           <Route path='/register' element={<Login isLogin={false} />} />
+          <Route path='/home' element={<Home />} />
         </Routes>
       </Box>
       <GeneralModal></GeneralModal>
