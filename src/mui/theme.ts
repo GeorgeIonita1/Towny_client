@@ -13,7 +13,7 @@ export const theme = createTheme({
         },
         MuiButtonBase: {
             defaultProps: {
-            LinkComponent: LinkBehavior,
+                LinkComponent: LinkBehavior,
             },
         },
         MuiContainer: {
