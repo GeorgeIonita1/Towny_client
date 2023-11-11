@@ -24,6 +24,14 @@ export interface IModalContext {
     setModalData: (data: IModalData) => void;
 }
 
-export interface ModalProviderProps {
+export interface IModalProviderProps {
+    children: ReactNode;
+}
+
+export interface IAuthContext {
+    handleRefreshAuth: () => void;
+}
+
+export interface IAuthProviderProps {
     children: ReactNode;
 }

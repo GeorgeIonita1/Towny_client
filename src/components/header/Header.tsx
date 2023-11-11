@@ -20,8 +20,7 @@ export default function Header() {
                         <Stack component='ul' direction='row' spacing={3} padding={0}>
                             <li><Link href='/'>Landing</Link></li>
                             <li><Link href='/login'>Login</Link></li>
-                            <li><Link href='/'>Landing</Link></li>
-                            <li><Link href='/login'>Login</Link></li>
+                            <li><Link href='/home'>Home</Link></li>
                         </Stack>
                     </Box>
 

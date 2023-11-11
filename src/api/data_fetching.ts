@@ -21,9 +21,13 @@ export const fetchSignInUser = (formData: IUserFormData) => {
     return axios.post(
         `${BASE_URL}/auth/signin`,
         { email, password },
-        {
-            headers: HEADERS,
-            withCredentials: true
-        }
+        { headers: HEADERS, withCredentials: true }
+    )
+}
+
+export const fetchRefreshAuth = () => {
+    axios.get(
+        `${BASE_URL}/auth/refresh`,
+        { headers: HEADERS, withCredentials: true }
     )
 }

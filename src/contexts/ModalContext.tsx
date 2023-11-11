@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from "react";
-import { IModalContext, ModalProviderProps } from "../interfaces/interfaces";
+import { IModalContext, IModalProviderProps } from "../interfaces/interfaces";
 
-const ModalContext = createContext<IModalContext | undefined>(undefined);
+const ModalContext = createContext<IModalContext | undefined>(undefined); // change to null?
 
-const ModalProvider = ({ children }: ModalProviderProps) => {
+const ModalProvider = ({ children }: IModalProviderProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState({
         type: '',
