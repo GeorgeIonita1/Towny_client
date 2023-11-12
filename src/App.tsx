@@ -7,22 +7,27 @@ import Landing from './pages/Landing';
 import { theme } from './mui/theme';
 import Login from './pages/Login';
 import GeneralModal from './components/modals/GeneralModal';
+import Dashboard from './components/dashboard/Dashboard';
 import Home from './pages/Home';
+import Drivers from './components/drivers/Drivers';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
-      <Box component='main'>
+      <Box>
         <Routes>
-          <Route path='/' element={<Landing />} />
+          <Route path='/' element={<Home />}>
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='drivers' element={<Drivers />} />
+          </Route>
+          <Route path='/landing' element={<Landing />} />
           <Route path='/login' element={<Login isLogin={true} />} />
           <Route path='/register' element={<Login isLogin={false} />} />
-          <Route path='/home' element={<Home />} />
         </Routes>
       </Box>
-      <GeneralModal></GeneralModal>
+      <GeneralModal />
     </ThemeProvider>
   )
 }
