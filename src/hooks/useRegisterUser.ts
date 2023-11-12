@@ -54,8 +54,7 @@ export default function useRegisterUser(isLogin: boolean) {
             }
         } else {
             const response = await fetchSignInUser(formData);
-            const data = await response.json()
-            console.log(data)
+            console.log(response)
         }
 
         

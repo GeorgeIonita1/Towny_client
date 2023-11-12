@@ -3,8 +3,11 @@ import { Box, List, ListItemButton, ListItemIcon, ListItemText, Link } from '@mu
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 
+import { useAuth } from '../../contexts/AuthContext';
+
 export default function MainMenu() {
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const { handleRefreshAuth } = useAuth();
 
     return (
         <Box component='aside' sx={{ maxWidth: '20rem' }}>
@@ -18,15 +21,15 @@ export default function MainMenu() {
                         <ListItemText primary="Dashboard" />
                     </ListItemButton>
                 </Link>
-
                 <Link href='/drivers'>
                     <ListItemButton selected={selectedIndex === 1} onClick={() => setSelectedIndex(1)}>
                         <ListItemIcon>
                             <DraftsIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Drivers" />
+                        <ListItemText primary="Drafts" />
                     </ListItemButton>
                 </Link>
+                <button onClick={handleRefreshAuth}>Refresh auth</button>
             </List>
         </Box>
     );

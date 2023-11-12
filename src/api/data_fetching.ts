@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { IUserFormData } from "../interfaces/interfaces";
 
 const BASE_URL = 'http://localhost:6677';
@@ -16,9 +18,16 @@ export const fetchRegisterUser = (formData: IUserFormData) => {
 export const fetchSignInUser = (formData: IUserFormData) => {
     const { email, password } = formData;
 
-    return fetch(`${BASE_URL}/auth/signin`, {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: HEADERS
-    })
+    return axios.post(
+        `${BASE_URL}/auth/signin`,
+        { email, password },
+        { headers: HEADERS, withCredentials: true }
+    )
+}
+
+export const fetchRefreshAuth = () => {
+    axios.get(
+        `${BASE_URL}/auth/refresh`,
+        { headers: HEADERS, withCredentials: true }
+    )
 }

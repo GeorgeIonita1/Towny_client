@@ -18,10 +18,9 @@ export default function Header() {
 
                     <Box component='nav' sx={{ ml: 6, mr: 'auto' }}>
                         <Stack component='ul' direction='row' spacing={3} padding={0}>
-                            <li><Link href='/'>Landing</Link></li>
+                            <li><Link href='/landing'>Landing</Link></li>
                             <li><Link href='/login'>Login</Link></li>
-                            <li><Link href='/'>Landing</Link></li>
-                            <li><Link href='/login'>Login</Link></li>
+                            <li><Link href='/'>Home</Link></li>
                         </Stack>
                     </Box>
 
