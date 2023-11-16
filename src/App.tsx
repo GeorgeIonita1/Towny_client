@@ -19,7 +19,7 @@ function App() {
       <Box>
         <Routes>
           <Route path='/' element={<Home />}>
-            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='/' element={<Dashboard />} />
             <Route path='drivers' element={<Drivers />} />
           </Route>
           <Route path='/landing' element={<Landing />} />

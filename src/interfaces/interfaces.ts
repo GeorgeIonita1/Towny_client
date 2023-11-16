@@ -29,7 +29,7 @@ export interface IModalProviderProps {
 }
 
 export interface IAuthContext {
-    handleRefreshAuth: () => void;
+    setAuthState: any; // create proper type
 }
 
 export interface IAuthProviderProps {

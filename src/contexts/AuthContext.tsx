@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate  } from "react-router-dom";
+
 import { IAuthContext, IAuthProviderProps } from "../interfaces/interfaces";
 import { fetchRefreshAuth } from "../api/data_fetching";
 
@@ -6,19 +8,26 @@ const AuthContext = createContext<IAuthContext | null>(null);
 
 const AuthProvider = ({ children }: IAuthProviderProps) => {
     const [authState, setAuthState] = useState(null);
-
-    const handleRefreshAuth = () => {
-        console.log('click');
-        fetchRefreshAuth();
-    }
+    const navigate = useNavigate();
 
     useEffect(() => {
-        console.log('authCOntext useeffect');
-        // fetchRefreshAuth();
+        console.log('first line of auth useEffect')
+        fetchRefreshAuth()
+            .then(res => {
+                console.log('are we fetching again?', res.data);
+                setAuthState(res.data);
+                navigate('/')
+            })
+            .catch(() => {
+                console.log('tre sa te loghezi')
+                navigate('/login');
+            })
+
+        console.log('authCOntext useeffect', authState);
     }, [])
 
     return (
-        <AuthContext.Provider value={{ handleRefreshAuth }}>
+        <AuthContext.Provider value={{ setAuthState }}>
             { children }
         </AuthContext.Provider>
     )
