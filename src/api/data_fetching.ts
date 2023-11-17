@@ -2,8 +2,7 @@ import axios from 'axios';
 
 import { IUserFormData } from "../interfaces/interfaces";
 
-// const BASE_URL = 'https://kind-elk-sheath-dress.cyclic.app';
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = import.meta.env.VITE_BASE_API_URL;
 const HEADERS = { 'Content-Type': 'application/json' };
 
 export const fetchRegisterUser = (formData: IUserFormData) => {
