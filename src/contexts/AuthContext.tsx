@@ -11,15 +11,11 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log('first line of auth useEffect')
         fetchRefreshAuth()
             .then(res => {
-                console.log('are we fetching again?', res.data);
                 setAuthState(res.data);
-                navigate('/')
             })
             .catch(() => {
-                console.log('tre sa te loghezi')
                 navigate('/login');
             })
 

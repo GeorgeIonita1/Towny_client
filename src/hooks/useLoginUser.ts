@@ -62,6 +62,11 @@ export default function useLoginUser(isLogin: boolean) {
                     setAuthState(res.data);
                     navigate('/');
                 })
+                .catch(res => {
+                    const { type, message, solution } = res.response.data;
+                setModalData({ type, message, solution });
+                handleOpenModal();
+                })
         }
     }
 

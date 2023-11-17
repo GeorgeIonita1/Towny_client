@@ -10,7 +10,7 @@ export default function MainMenu() {
         <Box component='aside' sx={{ maxWidth: '20rem' }}>
             {/* List needs aria label? */}
             <List component="nav"> 
-                <Link href='/dashboard'>
+                <Link href='/'>
                     <ListItemButton selected={selectedIndex === 0} onClick={() => setSelectedIndex(0)}>
                         <ListItemIcon>
                             <InboxIcon />
