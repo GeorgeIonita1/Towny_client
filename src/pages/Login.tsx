@@ -9,18 +9,19 @@ export default function FormLogin({ isLogin }: IFormLoginProps) {
     const { formError, handleUserInput, handleFormSubmit } = useLoginUser(isLogin);
 
     return (
-        <Box sx={{ maxWidth: 600, m: '0 auto' }}>
+        <Box sx={{ maxWidth: 600, m: '3rem auto 0' }}>
             <Paper elevation={6} sx={{ p: 2 }}>
                 <Typography variant='h4' component='h1'>Welcome</Typography>
                 <Typography variant='h6' component='h2'>Sign in or create account</Typography>
 
                 <Box 
-                    component='form' sx={{ mt: 4, '& > *': { width: 1 }, '& .MuiTextField-root': { mt: 3 }, '& small': { color: 'red' } }}
+                    component='form' sx={{ mt: 4, '& > *': { width: 1 }, '& .MuiTextField-root, & .MuiButtonBase-root': { mt: 3 }, '& small': { color: 'red' } }}
                     onSubmit={handleFormSubmit}
                 >
                     <TextField name='email' label="email" variant="outlined" required
                         onChange={handleUserInput}
                         error={!!formError.email}
+                        key={isLogin ? 1 : 2}
                     />
                     <Typography component='small'>{formError.email}</Typography>
 
@@ -28,6 +29,7 @@ export default function FormLogin({ isLogin }: IFormLoginProps) {
                         required
                         onChange={handleUserInput}
                         error={!!formError.password}
+                        key={isLogin ? 3 : 4}
                     />
                     <Typography component='small'>{formError.password}</Typography>
 
@@ -42,21 +44,37 @@ export default function FormLogin({ isLogin }: IFormLoginProps) {
                         </>
                     }
 
-                    { isLogin ? <Link href='/register'>Register</Link> : <Link href='/login'>Login</Link> }
 
-                    <Button variant='contained' sx={{ py: '1rem' }} type='submit'>Continue</Button>
+                    <Button variant='contained' sx={{ py: '1rem' }} type='submit'>Log in</Button>
                 </Box>
                 
-                {isLogin && (
-                    <div>
-                        <Typography variant='subtitle1' component='h3' align='center' sx={{ mt: 1}}>or sign in with</Typography>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 6, '& .MuiButton-root': { py: 1.5, flexGrow: 1 }, mt: 1 }}>
+                { isLogin && (
+                    <>
+                        <Typography 
+                            variant='subtitle1' component='small' align='center'
+                            sx={{ mt: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, '&::after, &::before': { content: '""', bgcolor: 'gray', height: '1px', width: '20%', display: 'block' } }}
+                        >
+                            or sign in with
+                        </Typography>
+
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 6, mt: 2, '& .MuiButton-root': { py: 1.5, flexGrow: 1 } }}>
                                 <Button variant='outlined' startIcon={<GoogleIcon />}>Google</Button>
                                 <Button variant='outlined' startIcon={<FacebookIcon />}>Facebook</Button>
                         </Box>
-                    </div>)
-                }
-                    <Typography variant='subtitle1' component='h3' align='center' sx={{ mt: 4 }}>By creating an account, you agree to our Terms of Service and Privacy Statement.</Typography>
+                    </>
+                )}
+
+                <Typography variant='subtitle1' component='h3' align='center' sx={{ mt: 4 }}>By creating an account, you agree to our Terms of Service and <br />Privacy Statement.</Typography>
+                
+                <Box sx={{ position: 'relative', mt: 2, pt: 2, display: 'flex', justifyContent: 'center',
+                    '&::before': { content: '""', position: 'absolute', height: '1px', width: '70%', bgcolor: 'gray', top: '0' } }}
+                >
+                    { isLogin ? (
+                        <Typography>Don't have an account? <Link href='/register'>Register</Link></Typography>
+                    ) : (
+                        <Typography>Already have an account? <Link href='/login'>Login</Link></Typography>
+                    )}
+                </Box>
             </Paper>
         </Box>
     )
