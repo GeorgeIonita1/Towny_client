@@ -49,7 +49,7 @@ export default function FormLogin({ isLogin }: IFormLoginProps) {
                 </Box>
                 
                 { isLogin && (
-                    <>
+                    <Box sx={{ '& .MuiButtonBase-root': { width: '100%', py: 2, mt: 2, cursor: 'not-allowed' }}}>
                         <Typography 
                             variant='subtitle1' component='small' align='center'
                             sx={{ mt: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, '&::after, &::before': { content: '""', bgcolor: 'gray', height: '1px', width: '20%', display: 'block' } }}
@@ -57,11 +57,9 @@ export default function FormLogin({ isLogin }: IFormLoginProps) {
                             or sign in with
                         </Typography>
 
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 6, mt: 2, '& .MuiButton-root': { py: 1.5, flexGrow: 1 }, '& .MuiButtonBase-root:hover': { cursor: 'not-allowed' } }}>
-                                <Button variant='outlined' startIcon={<GoogleIcon />}>Google</Button>
-                                <Button variant='outlined' startIcon={<FacebookIcon />}>Facebook</Button>
-                        </Box>
-                    </>
+                        <Button variant='outlined' startIcon={<GoogleIcon />}>Google</Button>
+                        <Button variant='outlined' startIcon={<FacebookIcon />}>Facebook</Button>
+                    </Box>
                 )}
 
                 <Typography variant='subtitle1' component='h3' align='center' sx={{ mt: 4 }}>By creating an account, you agree to our Terms of Service and <br />Privacy Statement.</Typography>
