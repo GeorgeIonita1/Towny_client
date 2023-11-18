@@ -57,7 +57,7 @@ export default function FormLogin({ isLogin }: IFormLoginProps) {
                             or sign in with
                         </Typography>
 
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 6, mt: 2, '& .MuiButton-root': { py: 1.5, flexGrow: 1 } }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 6, mt: 2, '& .MuiButton-root': { py: 1.5, flexGrow: 1 }, '& .MuiButtonBase-root:hover': { cursor: 'not-allowed' } }}>
                                 <Button variant='outlined' startIcon={<GoogleIcon />}>Google</Button>
                                 <Button variant='outlined' startIcon={<FacebookIcon />}>Facebook</Button>
                         </Box>
