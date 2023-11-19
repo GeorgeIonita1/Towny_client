@@ -24,3 +24,9 @@ export const validateForm = (formData: IUserFormData, isLogin: boolean, setFormE
     setFormError(errors);
     return Object.values(errors).every(error => error === '');
 }
+
+export const formInitialState = {
+    email: '',
+    password: '',
+    confirmPassword: ''
+}

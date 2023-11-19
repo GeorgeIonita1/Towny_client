@@ -20,6 +20,16 @@ export const theme = createTheme({
             defaultProps: {
                 maxWidth: 'xl',
             }
+        },
+        MuiTextField: {
+            defaultProps: {
+                fullWidth: true
+            },
+            styleOverrides: {
+                root: {
+                    marginTop: '1rem',
+                }
+            }
         }
     },
 })

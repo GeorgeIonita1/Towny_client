@@ -10,6 +10,6 @@ export const LinkBehavior = React.forwardRef<
   return <RouterLink ref={ref} to={href} {...other} />;
 });
 
-export const SectionElement = styled('section')({
+export const StyledSection = styled('section')({
   padding: '3rem 0'
-})
+});

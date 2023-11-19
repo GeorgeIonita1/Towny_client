@@ -1,9 +1,9 @@
 import { Typography, TextField, CardMedia, Container  } from '@mui/material';
-import { SectionElement } from '../mui/CustomComponents';
+import { StyledSection } from '../mui/CustomComponents';
 
 export default function Landing() {
     return (
-        <SectionElement>
+        <StyledSection>
             <Container>
                 <CardMedia 
                     image='https://picsum.photos/1100/350?blur=8'
@@ -19,6 +19,6 @@ export default function Landing() {
                     <TextField placeholder='Enter a destination' fullWidth sx={{ maxWidth: '40rem', mt: 8 }} />
                 </CardMedia>
             </Container>
-        </SectionElement>
+        </StyledSection>
     )
 }
