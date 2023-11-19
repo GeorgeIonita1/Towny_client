@@ -30,6 +30,12 @@ export const theme = createTheme({
                     marginTop: '1rem',
                 }
             }
+        },
+        MuiDialog: {
+            defaultProps: {
+                maxWidth: 'xs',
+                fullWidth: true
+            }
         }
     },
 })
