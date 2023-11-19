@@ -1,18 +1,17 @@
-import { Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
+import { Container, Box } from '@mui/material';
 
-import { StyledSection } from '../mui/CustomComponents';
 import MainMenu from '../components/main-menu/MainMenu';
 
 export default function Home() {
     return (
-        <StyledSection>
+        <Box component='main'>
             <Container>
-                <MainMenu />
-                <div>
+                <Box display='flex' gap='1rem'>
+                    <MainMenu />
                     <Outlet />
-                </div>
+                </Box>
             </Container>
-        </StyledSection>
+        </Box>
     );
 }

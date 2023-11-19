@@ -16,6 +16,12 @@ interface IModalData {
     solution: string;
 }
 
+interface IAuthState {
+    id: string;
+    email: string,
+    role: string;
+}
+
 export interface IModalContext {
     isModalOpen: boolean;
     modalData: any;
@@ -29,6 +35,7 @@ export interface IModalProviderProps {
 }
 
 export interface IAuthContext {
+    authState: null | IAuthState;
     setAuthState: any; // create proper type
 }
 

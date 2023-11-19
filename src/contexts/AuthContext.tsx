@@ -12,18 +12,14 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
 
     useEffect(() => {
         fetchRefreshAuth()
-            .then(res => {
-                setAuthState(res.data);
-            })
-            .catch(() => {
-                navigate('/login');
-            })
+            .then(res => setTimeout(() => setAuthState(res.data), 800))
+            .catch(() => setTimeout(() => navigate('/login'), 800))
 
         console.log('authCOntext useeffect', authState);
     }, [])
 
     return (
-        <AuthContext.Provider value={{ setAuthState }}>
+        <AuthContext.Provider value={{ authState, setAuthState }}>
             { children }
         </AuthContext.Provider>
     )

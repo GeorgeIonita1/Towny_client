@@ -10,7 +10,7 @@ export default function FormLogin({ isLogin }: IFormLoginProps) {
 
     return (
         <Box 
-            sx={{ maxWidth: 600, m: '3rem auto 0' }}
+            sx={{ maxWidth: 600, m: '0 auto' }}
         >
             <Paper 
                 elevation={6}
