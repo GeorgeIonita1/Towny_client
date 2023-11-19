@@ -4,6 +4,9 @@ import { LinkProps } from '@mui/material/Link';
 import { LinkBehavior } from './CustomComponents';
 
 export const theme = createTheme({
+    palette: {
+        mode: 'dark'
+    },
     components: {
         MuiLink: {
             defaultProps: {
